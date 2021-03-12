@@ -20,9 +20,9 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-    btnStopService.setOnClickListener {
-        MyIntentService.stopService()
-        tvServiceInfo.text = "Service stopped"
+        btnStopService.setOnClickListener {
+            MyIntentService.stopService()
+            tvServiceInfo.text = "Service stopped"
     }
 
 
