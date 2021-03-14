@@ -4,25 +4,27 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myserviceintent.R
+import com.example.myserviceintent.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
-        btnStartService.setOnClickListener {
+        binding.btnStartService.setOnClickListener {
             Intent(this, MyIntentService::class.java).also {
             startService(it)
-            tvServiceInfo.text = "Service runnning"
+            binding.tvServiceInfo.text = "Service runnning"
             }
 
         }
 
-        btnStopService.setOnClickListener {
+        binding.btnStopService.setOnClickListener {
             MyIntentService.stopService()
-            tvServiceInfo.text = "Service stopped"
+            binding.tvServiceInfo.text = "Service stopped"
     }
 
 
