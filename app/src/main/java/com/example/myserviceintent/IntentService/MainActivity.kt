@@ -1,6 +1,7 @@
 package com.example.myserviceintent.IntentService
 
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -45,7 +46,16 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+
+
+        //Broadcast receiver
+        val br = BroadcastExample()
+        val filter = IntentFilter()
+        filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED)
+        this.registerReceiver(br, filter)
+
     }
+
 
 
 
