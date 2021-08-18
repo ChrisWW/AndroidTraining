@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myserviceintent.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    val br = BroadcastExample()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -47,15 +49,20 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
 
-        //Broadcast receiver
-        val br = BroadcastExample()
+    override fun onStart() {
+        super.onStart()
+
         val filter = IntentFilter()
         filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED)
         this.registerReceiver(br, filter)
-
     }
 
+    override fun onStop() {
+        super.onStop()
+        this.unregisterReceiver(br)
+    }
 
 
 
